@@ -55,29 +55,9 @@ const storage = multer.diskStorage({
 const upload = multer({
     storage: storage
 })
-// end imag eupload 
 
-// router.post('/add_employee',upload.single('image'), (req, res) => {
-//     const sql = `INSERT INTO employee 
-//     (name,email,password, address, salary,image, category_id) 
-//     VALUES (?)`;
-//     bcrypt.hash(req.body.password, 10, (err, hash) => {
-//         if(err) return res.json({Status: false, Error: "Query Error"})
-//         const values = [
-//             req.body.name,
-//             req.body.email,
-//             hash,
-//             req.body.address,
-//             req.body.salary, 
-//             req.file.filename,
-//             req.body.category_id
-//         ]
-//         Connection.query(sql, [values], (err, result) => {
-//             if(err) return res.json({Status: false, Error: err})
-//             return res.json({Status: true})
-//         })
-//     })
-// })
+
+
 router.post('/add_employee', upload.single('image'), async (req, res) => {
     try {
         if (!req.body.name || !req.body.email || !req.body.password || !req.body.address || !req.body.salary || !req.body.category_id || !req.file) {
